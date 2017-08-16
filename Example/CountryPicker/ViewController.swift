@@ -16,12 +16,12 @@ class ViewController: UIViewController, CountryPickerDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         //get corrent country
-        let locale = Locale.current
-        let code = (locale as NSLocale).object(forKey: NSLocale.Key.countryCode) as! String?
-        //init Picker
+//        let locale = Locale.current
+//        let code = (locale as NSLocale).object(forKey: NSLocale.Key.countryCode) as! String?
+//        //init Picker
         picker.countryPickerDelegate = self
-        picker.showPhoneNumbers = true
-        picker.setCountry(code!)
+//        picker.showPhoneNumbers = true
+//        picker.setCountry(code!)
     }
   
     // MARK: - CountryPhoneCodePicker Delegate
