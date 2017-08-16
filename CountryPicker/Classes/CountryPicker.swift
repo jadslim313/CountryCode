@@ -137,11 +137,18 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
                     guard let code = countryObj["code"] as? String, let phoneCode = countryObj["dial_code"] as? String, let name = countryObj["name"] as? String else {
                         return countries
                     }
-                    
                     let flagName = "CountryPicker.bundle/Images/\(code.uppercased())"
 
                     let country = Country(code: code, name: name, phoneCode: phoneCode, flagName: flagName)
-                    countries.append(country)
+                    print(country.name)
+                    if (country.name! == "Canada") {
+                        countries.insert(country, at: 0)
+                    } else if (country.name! == "United States") {
+                        countries.insert(country, at: 1)
+                        countries.append(country)
+                    } else {
+                        countries.append(country)
+                    }
                 }
                 
             }
@@ -183,7 +190,6 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
         } else {
             resultView = view as! CountryView
         }
-        
         resultView.setup(countries[row])
         if !showPhoneNumbers {
             resultView.countryCodeLabel.isHidden = true
